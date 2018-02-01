@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ news.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <ion-card>
+    <img src="{{ news.urlToImage }}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{ news.title }}
+      </ion-card-title>
+      <p>
+        {{ news.description }}
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" (click)="openBrowser(news.url)" icon-start>
+          <ion-icon ios="ios-open" md="md-open"></ion-icon>
+          Open
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" (click)="shareWithWhatsapp(news)" icon-start>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>
