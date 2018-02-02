@@ -2,7 +2,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {NewsService} from "./news.service";
 import {Component} from "@angular/core";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
-import { SocialSharing } from '@ionic-native/social-sharing';
+import {SocialSharing} from '@ionic-native/social-sharing';
 
 
 @Component({
@@ -37,18 +37,27 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
               private newsService: NewsService) {
+    this.getHeadLines(null);
+  }
+
+  private getHeadLines(refresher) {
     for (let country of this.countries) {
       this.newsService
         .getHeadlines(country)
         .subscribe(
           data => {
             this.headlinesMap[country] = data["articles"];
+            if (refresher != null) {
+              refresher.complete();
+            }
           }
         );
-
     }
   }
 
+  doRefresh(refresher) {
+    this.getHeadLines(refresher);
+  }
 
   openNews(h) {
     this.navCtrl.push(NavigationDetailsPage, {item: h});
