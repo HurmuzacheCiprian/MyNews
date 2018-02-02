@@ -6,6 +6,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Ciprian-Constantin Hurmuzache (hurmuzache.ciprian@gmail.com)</h2>
+<ion-content>
+  <ion-list>
+    <ion-list-header>Follow us on Github/Twitter</ion-list-header>
+    <ion-item (click)="openGithub()">
+      <ion-icon name="logo-github"></ion-icon>
+      @HurmuzacheCiprian
+    </ion-item>
+    <ion-item (click)="openTwitter()">
+      <ion-icon name="logo-twitter"></ion-icon>
+      @cchurmuzuache
+    </ion-item>
+  </ion-list>
 </ion-content>
